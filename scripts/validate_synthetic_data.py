@@ -77,17 +77,17 @@ def main() -> int:
         v.err(f"Expected 8 contacts, found {len(contacts)}")
     if len(opportunities) != 4:
         v.err(f"Expected 4 opportunities, found {len(opportunities)}")
-    if len(tasks) != 10:
-        v.err(f"Expected 10 tasks, found {len(tasks)}")
+    if len(tasks) != 11:
+        v.err(f"Expected 11 tasks, found {len(tasks)}")
     if not (4 <= len(ocrs) <= 6):
         v.err(f"Expected 4–6 OCRs, found {len(ocrs)}")
-    if len(meetings) != 4:
-        v.err(f"Expected 4 granola meetings, found {len(meetings)}")
+    if len(meetings) != 5:
+        v.err(f"Expected 5 granola meetings, found {len(meetings)}")
 
     meeting_tasks = [t for t in tasks if t.get("activity_kind") == "Meeting"]
     email_tasks = [t for t in tasks if t.get("activity_kind") == "Email"]
-    if len(meeting_tasks) != 4:
-        v.err(f"Expected 4 meeting tasks, found {len(meeting_tasks)}")
+    if len(meeting_tasks) != 5:
+        v.err(f"Expected 5 meeting tasks, found {len(meeting_tasks)}")
     if len(email_tasks) != 6:
         v.err(f"Expected 6 email tasks, found {len(email_tasks)}")
 
@@ -320,6 +320,11 @@ def main() -> int:
             if meeting.get("linked_task_key") != t.get("task_key"):
                 v.err(
                     f"{t.get('task_key')} / {mk}: meeting↔task link is not reciprocal"
+                )
+            mtg_day = str(meeting.get("start_time", ""))[:10]
+            if t.get("ActivityDate") and mtg_day and t["ActivityDate"] != mtg_day:
+                v.err(
+                    f"{t.get('task_key')} / {mk}: ActivityDate {t['ActivityDate']} != meeting day {mtg_day}"
                 )
 
     # Ensure no synthetic relationship fields look like SF IDs
