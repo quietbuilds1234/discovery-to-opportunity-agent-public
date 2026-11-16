@@ -1,0 +1,34 @@
+# Salesforce CLI / auth
+.sf/
+.sfdx/
+*.session
+*accessToken*
+*refreshToken*
+
+# Secrets and env
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials*.json
+secrets*
+
+# Local Salesforce ID mapping (contains org record Ids)
+data/.salesforce-id-map.json
+data/.salesforce-id-map.*.json
+
+# Temporary import artifacts
+tmp/
+.tmp/
+*.log
+logs/
+import-*.json
+/tmp-sf-*/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp

@@ -1,0 +1,50 @@
+[
+  {
+    "opportunity_key": "OPP-001",
+    "Name": "Meridian Robotics - Apollo Sales Intelligence Platform",
+    "account_key": "ACC-001",
+    "StageName": "Proposal/Price Quote",
+    "CloseDate": "2026-03-31",
+    "Amount": 180000,
+    "Type": "New Customer",
+    "LeadSource": "Web",
+    "Description": "Open evaluation of Apollo for Meridian's AE team: contact/company intelligence, Salesforce enrichment, and outbound prospecting support. Proposal in progress with Sales and Sales Ops stakeholders.",
+    "NextStep": "Deliver revised proposal and schedule security/Salesforce integration review with Sales Ops."
+  },
+  {
+    "opportunity_key": "OPP-002",
+    "Name": "Cascade Health - Apollo Partner Lead Enrichment",
+    "account_key": "ACC-002",
+    "StageName": "Prospecting",
+    "CloseDate": "2026-06-30",
+    "Amount": 95000,
+    "Type": "New Customer",
+    "LeadSource": "Partner Referral",
+    "Description": "Early, incomplete conversation about enriching inbound leads from Cascade's channel-partner referral program before SDR outreach. Distinct from any direct hospital-account outbound / buying-group discovery. Qualification incomplete.",
+    "NextStep": "Confirm whether partner-marketing and RevOps want a scoped enrichment pilot for partner-sourced leads only."
+  },
+  {
+    "opportunity_key": "OPP-003",
+    "Name": "Northwind Retail - Apollo Sales Intelligence Platform",
+    "account_key": "ACC-003",
+    "StageName": "Closed Won",
+    "CloseDate": "2025-09-15",
+    "Amount": 220000,
+    "Type": "New Customer",
+    "LeadSource": "Other",
+    "Description": "Closed Won Apollo deployment for Northwind's B2B wholesale and enterprise partnership sellers: prospecting, enrichment, and Salesforce contact hygiene.",
+    "NextStep": "Quarterly business review with partnerships and sales leadership."
+  },
+  {
+    "opportunity_key": "OPP-004",
+    "Name": "Meridian Robotics - Standalone Contact Data Provider",
+    "account_key": "ACC-001",
+    "StageName": "Closed Lost",
+    "CloseDate": "2025-11-20",
+    "Amount": 60000,
+    "Type": "New Customer",
+    "LeadSource": "Phone Inquiry",
+    "Description": "Closed Lost evaluation of a narrower contact-data-only vendor. Lost to status quo / spreadsheets after limited sales leadership sponsorship.",
+    "NextStep": "None — closed lost."
+  }
+]

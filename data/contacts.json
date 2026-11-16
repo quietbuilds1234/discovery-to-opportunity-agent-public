@@ -1,0 +1,74 @@
+[
+  {
+    "contact_key": "CON-001",
+    "FirstName": "Jordan",
+    "LastName": "Blake",
+    "Title": "VP of Sales",
+    "Email": "jordan.blake@meridian-robotics.example.com",
+    "Phone": "+1-512-555-0142",
+    "account_key": "ACC-001"
+  },
+  {
+    "contact_key": "CON-002",
+    "FirstName": "Sam",
+    "LastName": "Rivera",
+    "Title": "Manager, Sales Development",
+    "Email": "sam.rivera@meridian-robotics.example.com",
+    "Phone": "+1-512-555-0188",
+    "account_key": "ACC-001"
+  },
+  {
+    "contact_key": "CON-003",
+    "FirstName": "Casey",
+    "LastName": "Nguyen",
+    "Title": "Sales Operations Manager",
+    "Email": "casey.nguyen@meridian-robotics.example.com",
+    "Phone": "+1-512-555-0167",
+    "account_key": "ACC-001"
+  },
+  {
+    "contact_key": "CON-004",
+    "FirstName": "Avery",
+    "LastName": "Patel",
+    "Title": "VP of Sales",
+    "Email": "avery.patel@cascade-health.example.org",
+    "Phone": "+1-503-555-0119",
+    "account_key": "ACC-002"
+  },
+  {
+    "contact_key": "CON-005",
+    "FirstName": "Riley",
+    "LastName": "Chen",
+    "Title": "Senior Sales Development Representative",
+    "Email": "riley.chen@cascade-health.example.org",
+    "Phone": "+1-503-555-0174",
+    "account_key": "ACC-002"
+  },
+  {
+    "contact_key": "CON-006",
+    "FirstName": "Quinn",
+    "LastName": "Morgan",
+    "Title": "Revenue Operations Manager",
+    "Email": "quinn.morgan@cascade-health.example.org",
+    "Phone": "+1-503-555-0133",
+    "account_key": "ACC-002"
+  },
+  {
+    "contact_key": "CON-007",
+    "FirstName": "Taylor",
+    "LastName": "Brooks",
+    "Title": "Head of Strategic Partnerships",
+    "Email": "taylor.brooks@northwind-retail.example.com",
+    "Phone": "+1-312-555-0190",
+    "account_key": "ACC-003"
+  },
+  {
+    "contact_key": "CON-008",
+    "FirstName": "Morgan",
+    "LastName": "Ellis",
+    "Title": "Chief Executive Officer",
+    "Email": "morgan.ellis@northwind-retail.example.com",
+    "Phone": "+1-312-555-0121",
+    "account_key": "ACC-003"
+  }
+]

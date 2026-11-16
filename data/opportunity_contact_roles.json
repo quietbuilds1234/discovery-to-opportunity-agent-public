@@ -1,0 +1,37 @@
+[
+  {
+    "ocr_key": "OCR-001",
+    "opportunity_key": "OPP-001",
+    "contact_key": "CON-001",
+    "Role": "Decision Maker",
+    "IsPrimary": true
+  },
+  {
+    "ocr_key": "OCR-002",
+    "opportunity_key": "OPP-001",
+    "contact_key": "CON-003",
+    "Role": "Technical Buyer",
+    "IsPrimary": false
+  },
+  {
+    "ocr_key": "OCR-003",
+    "opportunity_key": "OPP-002",
+    "contact_key": "CON-004",
+    "Role": "Business User",
+    "IsPrimary": true
+  },
+  {
+    "ocr_key": "OCR-004",
+    "opportunity_key": "OPP-003",
+    "contact_key": "CON-007",
+    "Role": "Decision Maker",
+    "IsPrimary": true
+  },
+  {
+    "ocr_key": "OCR-005",
+    "opportunity_key": "OPP-004",
+    "contact_key": "CON-002",
+    "Role": "Business User",
+    "IsPrimary": true
+  }
+]

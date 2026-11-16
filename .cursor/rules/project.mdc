@@ -1,0 +1,46 @@
+---
+description: Persistent development rules for the Discovery-to-Opportunity Agent interview project
+alwaysApply: true
+---
+
+# Discovery-to-Opportunity Agent — Project Rules
+
+## Source of Truth
+
+- Treat `PROJECT_CONTEXT.md` as the requirements source of truth.
+- Prefer lightweight, demo-ready implementation over over-engineering.
+- Keep implemented vs planned functionality clearly labeled.
+- Synthetic data should reflect Apollo GTM/sales-intelligence ICP working assumptions (not generic unrelated SaaS purchases).
+
+## Product Guardrails
+
+- MEDDPICC is enrichment, not a gatekeeper. Missing MEDDPICC alone must never block Opportunity creation.
+- Never fabricate CRM facts or present inferences as confirmed.
+- Never create or update Salesforce records without explicit rep approval in the Skill workflow.
+- Detect potential duplicate Opportunities before proposing creation.
+- Do not build a compliance bot; prioritize rep productivity and control.
+
+## Technical Guardrails
+
+- No custom backend or custom MCP server.
+- No unnecessary dependencies.
+- Use standard Salesforce objects only.
+- Do not store credentials, tokens, passwords, or secrets in the repo.
+- Local Salesforce CLI auth (`discovery-dev`) is for development/seeding only — it is not Claude runtime Salesforce access.
+- Do not invent integrations, fabricate API responses, or claim unverified Granola/Salesforce access works.
+- If Granola is unavailable, use clearly labeled synthetic meeting fixtures.
+
+## Implementation Order
+
+1. Requirements and architecture docs
+2. Synthetic data and test scenarios
+3. Skill + reference docs
+4. Salesforce field validation and data loading (only when approved)
+5. Demo docs and walkthrough
+
+Do not skip ahead to Salesforce writes or Skill implementation until the user approves the next phase.
+
+## Documentation Style
+
+- Be concise and credible for a live interview demo.
+- Document assumptions and open validations in `docs/demo-decisions.md`.

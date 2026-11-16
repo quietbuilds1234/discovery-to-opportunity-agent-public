@@ -1,0 +1,44 @@
+[
+  {
+    "account_key": "ACC-001",
+    "Name": "Meridian Robotics",
+    "Website": "https://www.meridian-robotics.example.com",
+    "Industry": "Manufacturing",
+    "Type": "Prospect",
+    "Description": "B2B industrial robotics manufacturer selling autonomous mobile robots to warehouses and factories. Growing SDR and AE organization uses Salesforce. Evaluating sales intelligence tooling to improve outbound prospecting, contact data quality, and buyer identification.",
+    "BillingCity": "Austin",
+    "BillingState": "Texas",
+    "BillingStateCode": "TX",
+    "BillingCountry": "United States",
+    "BillingCountryCode": "US",
+    "NumberOfEmployees": 860
+  },
+  {
+    "account_key": "ACC-002",
+    "Name": "Cascade Health Partners",
+    "Website": "https://www.cascade-health.example.org",
+    "Industry": "Healthcare",
+    "Type": "Prospect",
+    "Description": "B2B healthcare services company that sells care-operations programs and advisory services into regional clinics and hospital systems. Salesforce-centric sales org with SDRs and AEs. Exploring better contact enrichment and buying-group visibility for provider accounts.",
+    "BillingCity": "Portland",
+    "BillingState": "Oregon",
+    "BillingStateCode": "OR",
+    "BillingCountry": "United States",
+    "BillingCountryCode": "US",
+    "NumberOfEmployees": 4200
+  },
+  {
+    "account_key": "ACC-003",
+    "Name": "Northwind Retail Group",
+    "Website": "https://www.northwind-retail.example.com",
+    "Industry": "Retail",
+    "Type": "Customer - Direct",
+    "Description": "Omnichannel retailer with a distinct B2B motion: wholesale distribution to independent retailers plus enterprise retail partnership deals. Existing Apollo customer. Partnerships and executive stakeholders occasionally network with vendors; no active expansion evaluation in the current fixtures.",
+    "BillingCity": "Chicago",
+    "BillingState": "Illinois",
+    "BillingStateCode": "IL",
+    "BillingCountry": "United States",
+    "BillingCountryCode": "US",
+    "NumberOfEmployees": 2100
+  }
+]
