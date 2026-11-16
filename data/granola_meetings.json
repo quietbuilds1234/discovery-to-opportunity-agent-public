@@ -3,8 +3,8 @@
     "meeting_key": "MTG-001",
     "meeting_id": "granola-syn-mtg-001",
     "title": "Discovery — Meridian Robotics SDR Outbound & Contact Data",
-    "start_time": "2026-02-10T16:00:00Z",
-    "end_time": "2026-02-10T16:45:00Z",
+    "start_time": "2026-10-14T16:00:00Z",
+    "end_time": "2026-10-14T16:45:00Z",
     "account_key": "ACC-001",
     "account_name": "Meridian Robotics",
     "attendees": [
@@ -33,22 +33,22 @@
         "contact_key": "CON-003"
       }
     ],
-    "transcript": "Alex Reed: Thanks for making time. After the webinar you mentioned SDRs were drowning in research — can you walk me through the current workflow?\nJordan Blake: Sure. We are hiring into a mid-market warehouse motion and pipeline is the constraint. AEs can run late-stage deals; we are not generating enough qualified first meetings.\nSam Rivera: My team spends maybe two hours a day just finding emails and verifying titles. We bounce a lot. LinkedIn plus spreadsheets plus whatever is already in Salesforce — which is often stale.\nAlex Reed: What does that look like for a typical account?\nSam Rivera: Say a regional 3PL. We need the VP Ops or Head of Warehouse Systems, plus whoever owns automation budget. Half the time the contact in Salesforce left six months ago.\nCasey Nguyen: From Sales Ops side, enrichment is inconsistent. People overwrite fields, duplicates creep in, and we do not have a clean push back into Salesforce. I care about CRM hygiene as much as the prospecting UI.\nAlex Reed: If this worked, what would change in the next quarter?\nJordan Blake: If SDRs spent less time researching and more time actually working sequences, we could lift meetings booked. I do not have a precise dollar model yet, but overtime on research and missed coverage on mid-market accounts is real. For a pilot I can fund from my sales budget; a broader rollout would need Finance and I have not looped them in.\nSam Rivera: I would use this every day if the data is decent and it does not create more Salesforce mess. Happy to be the day-to-day owner for an SDR pilot.\nAlex Reed: Anyone else you are evaluating?\nJordan Blake: We tried a cheaper contact-only vendor last year and it did not stick. Nothing active right now besides improving our own lists.\nAlex Reed: Next step — I can send a short workflow one-pager for SDR research plus Salesforce write-back, and we schedule a pilot scoping call?\nJordan Blake: Yes. Next week. Sam and Casey should be there.",
-    "summary": "Meridian Sales and SDR leadership described clear pain: manual prospect research, bounced/outdated contacts, and weak mid-market outbound coverage. Sales Ops needs clean Salesforce enrichment. Jordan can pilot from sales budget; Finance not engaged for broader purchase. Next step is a workflow one-pager and pilot scoping call.",
+    "transcript": "Alex Reed: Thanks for making time. After the webinar you mentioned SDRs were drowning in research — can you walk me through the current workflow?\nJordan Blake: Sure. We are hiring into a mid-market warehouse motion and pipeline is the constraint. AEs can run late-stage deals; we are not generating enough qualified first meetings.\nSam Rivera: My team spends maybe two hours a day just finding emails and verifying titles. We bounce a lot. LinkedIn plus spreadsheets plus whatever is already in Salesforce — which is often stale.\nAlex Reed: What does that look like for a typical account?\nSam Rivera: Say a regional 3PL. We need the VP Ops or Head of Warehouse Systems, plus whoever owns automation budget. Half the time the contact in Salesforce left six months ago.\nCasey Nguyen: From Sales Ops side, enrichment is inconsistent. People overwrite fields, duplicates creep in, and we do not have a clean push back into Salesforce. I care about CRM hygiene as much as the prospecting UI.\nAlex Reed: If this worked, what would change in the next quarter?\nJordan Blake: If SDRs spent less time researching and more time actually working sequences, we could lift meetings booked. I do not have a precise dollar model yet, but overtime on research and missed coverage on mid-market accounts is real. For a pilot I can fund from my sales budget; a broader rollout would need Finance and I have not looped them in.\nSam Rivera: I would use this every day if the data is decent and it does not create more Salesforce mess. Happy to be the day-to-day owner for an SDR pilot.\nAlex Reed: Anyone else you are evaluating?\nJordan Blake: We tried a cheaper contact-only vendor last year and it did not stick. Nothing active right now besides improving our own lists.\nAlex Reed: Next step — I can send a short workflow one-pager for SDR research plus Salesforce write-back, and we schedule a pilot scoping call?\nJordan Blake: Yes. Let's aim for later this month or early November. Sam and Casey should be there.",
+    "summary": "October 14 discovery: Meridian Sales and SDR leadership described clear pain — manual prospect research, bounced/outdated contacts, and weak mid-market outbound coverage. Sales Ops needs clean Salesforce enrichment. Jordan can pilot from sales budget; Finance not engaged for broader purchase. Next step is a workflow one-pager and pilot scoping call (targeted late October / early November).",
     "action_items": [
       "AE to send SDR workflow + Salesforce write-back one-pager.",
-      "Schedule pilot scoping call with Jordan, Sam, and Casey.",
+      "Schedule pilot scoping call with Jordan, Sam, and Casey (late October / early November).",
       "Capture draft pilot success ideas (research time saved, meetings booked) without fabricating ROI."
     ],
     "linked_task_key": "TSK-001",
-    "fixture_note": "SYNTHETIC Granola-style fixture. Apollo ICP discovery for SCENARIO-01 CREATE."
+    "fixture_note": "SYNTHETIC Granola-style fixture (not live Granola). Apollo ICP discovery for SCENARIO-01 CREATE. Dated Oct 2026 for a Nov 16, 2026 demo."
   },
   {
     "meeting_key": "MTG-002",
     "meeting_id": "granola-syn-mtg-002",
     "title": "Discovery — Cascade Health Hospital Account Buying Groups",
-    "start_time": "2026-02-12T18:30:00Z",
-    "end_time": "2026-02-12T19:05:00Z",
+    "start_time": "2026-10-21T18:30:00Z",
+    "end_time": "2026-10-21T19:05:00Z",
     "account_key": "ACC-002",
     "account_name": "Cascade Health Partners",
     "attendees": [
@@ -71,22 +71,22 @@
         "contact_key": "CON-005"
       }
     ],
-    "transcript": "Alex Reed: Thanks for the intro. What prompted looking at sales intelligence?\nAvery Patel: Our AEs sell into hospital systems and larger clinic groups. Finding the right people is painful — operations, IT, and clinical stakeholders — and our CRM contacts are a mess.\nRiley Chen: I am on the phones every day. I burn time guessing titles. Bounce rates are high. Sometimes I reach a manager who says the budget owner is someone else entirely.\nAlex Reed: Have you measured the impact?\nRiley Chen: Not formally. I just know I work fewer accounts thoroughly than I should. Avery hears it in pipeline reviews, but we do not have a clean baseline metric pack.\nAlex Reed: Who would own a purchase if you moved forward?\nAvery Patel: Unclear. Sales cares. RevOps would have to bless Salesforce changes — Quinn was not available today. Finance has not been involved. I am interested, but I am not opening a formal evaluation this week.\nAlex Reed: Timeline?\nAvery Patel: Maybe something exploratory later. This quarter is packed. Do not assume we have a deal process yet.\nRiley Chen: I would love better contact data and a way to map buying groups on hospital accounts. I am not ready to champion an RFP.\nAlex Reed: Any other vendors?\nAvery Patel: We have not started a comparison. Separately someone mentioned enriching partner-referral leads, but that is a different thread — not what we are talking about today.\nAlex Reed: I can send a short brief on contact enrichment and buying-group mapping for provider accounts. Would that help internal conversations?\nAvery Patel: Yes. I will socialize it. Please do not treat this as a committed opportunity yet.",
-    "summary": "Cascade Sales and an SDR described legitimate early pain finding hospital buying groups and keeping CRM contacts accurate. Metrics, Economic Buyer, decision process, and timeline remain undefined. Avery will socialize a brief; no evaluation commitment. Distinct from the separate partner-lead enrichment thread tracked as OPP-002.",
+    "transcript": "Alex Reed: Thanks for the intro. What prompted looking at sales intelligence?\nAvery Patel: Our AEs sell into hospital systems and larger clinic groups. Finding the right people is painful — operations, IT, and clinical stakeholders — and our CRM contacts are a mess.\nRiley Chen: I am on the phones every day. I burn time guessing titles. Bounce rates are high. Sometimes I reach a manager who says the budget owner is someone else entirely.\nAlex Reed: Have you measured the impact?\nRiley Chen: Not formally. I just know I work fewer accounts thoroughly than I should. Avery hears it in pipeline reviews, but we do not have a clean baseline metric pack.\nAlex Reed: Who would own a purchase if you moved forward?\nAvery Patel: Unclear. Sales cares. RevOps would have to bless Salesforce changes — Quinn was not available today. Finance has not been involved. I am interested, but I am not opening a formal evaluation this week.\nAlex Reed: Timeline?\nAvery Patel: Maybe something exploratory later. Q4 is packed with year-end deals. Do not assume we have a deal process yet.\nRiley Chen: I would love better contact data and a way to map buying groups on hospital accounts. I am not ready to champion an RFP.\nAlex Reed: Any other vendors?\nAvery Patel: We have not started a comparison. Separately someone mentioned enriching partner-referral leads, but that is a different thread — not what we are talking about today.\nAlex Reed: I can send a short brief on contact enrichment and buying-group mapping for provider accounts. Would that help internal conversations?\nAvery Patel: Yes. I will socialize it. Please do not treat this as a committed opportunity yet.",
+    "summary": "October 21 early discovery: Cascade Sales and an SDR described legitimate pain finding hospital buying groups and keeping CRM contacts accurate. Metrics, Economic Buyer, decision process, and timeline remain undefined — Q4 bandwidth is limited. Avery will socialize a brief; no evaluation commitment. Distinct from the separate partner-lead enrichment thread tracked as OPP-002.",
     "action_items": [
       "AE to send brief on contact enrichment and buying-group mapping for hospital/clinic accounts.",
       "Avery to socialize internally and identify whether a budget owner exists.",
-      "Revisit after Cascade capacity opens; no firm date committed."
+      "Revisit after Cascade year-end capacity opens; no firm date committed."
     ],
     "linked_task_key": "TSK-002",
-    "fixture_note": "SYNTHETIC Granola-style fixture. Apollo ICP discovery for SCENARIO-02 CREATE WITH GAPS. Not a duplicate of OPP-002 (partner lead enrichment)."
+    "fixture_note": "SYNTHETIC Granola-style fixture (not live Granola). SCENARIO-02 CREATE WITH GAPS. Not a duplicate of OPP-002. Dated Oct 2026."
   },
   {
     "meeting_key": "MTG-003",
     "meeting_id": "granola-syn-mtg-003",
     "title": "Follow-up — Meridian Robotics Apollo Sales Intelligence Platform",
-    "start_time": "2026-02-18T17:00:00Z",
-    "end_time": "2026-02-18T17:40:00Z",
+    "start_time": "2026-10-28T17:00:00Z",
+    "end_time": "2026-10-28T17:40:00Z",
     "account_key": "ACC-001",
     "account_name": "Meridian Robotics",
     "attendees": [
@@ -115,22 +115,22 @@
         "contact_key": "CON-002"
       }
     ],
-    "transcript": "Alex Reed: Picking up on the Apollo Sales Intelligence Platform proposal — where are we?\nJordan Blake: Still moving. This is the same platform evaluation we have been running for the AE team and Salesforce enrichment — not a new project.\nCasey Nguyen: Security questionnaire is about 70% done. I need the Salesforce field-mapping diagram updated for the second sales region.\nSam Rivera: Acceptance criteria should still include bounce-rate improvement and usable mobile numbers for sequences. That has not changed.\nAlex Reed: Should we open a separate opportunity for the second region?\nJordan Blake: Please do not. Keep it under the same Apollo Sales Intelligence Platform deal. Finance will get confused if there are two opportunities for one platform decision.\nAlex Reed: Understood. I will revise pricing options for 25 vs 40 seats and the enrichment volume tiers.\nJordan Blake: Good. I will try to get Finance on a review after we see the update.\nCasey Nguyen: Competitor-wise we are not in a bake-off; it is mostly Apollo versus improving our messy Salesforce data manually.\nAlex Reed: Next step is the updated proposal and confirming the finance review.\nJordan Blake: Yes.",
-    "summary": "Follow-up on the existing Apollo Sales Intelligence Platform evaluation already in proposal stage. Stakeholders explicitly want one commercial initiative, not a second Opportunity. Security questionnaire in progress; proposal revision and finance review are next.",
+    "transcript": "Alex Reed: Picking up on the Apollo Sales Intelligence Platform proposal — where are we?\nJordan Blake: Still moving. This is the same platform evaluation we have been running for the AE team and Salesforce enrichment — not a new project. Separate from the SDR contact-data pilot we started talking about earlier this month.\nCasey Nguyen: Security questionnaire is about 70% done. I need the Salesforce field-mapping diagram updated for the second sales region.\nSam Rivera: Acceptance criteria should still include bounce-rate improvement and usable mobile numbers for sequences. That has not changed.\nAlex Reed: Should we open a separate opportunity for the second region?\nJordan Blake: Please do not. Keep it under the same Apollo Sales Intelligence Platform deal. Finance will get confused if there are two opportunities for one platform decision.\nAlex Reed: Understood. I will revise pricing options for 25 vs 40 seats and the enrichment volume tiers.\nJordan Blake: Good. I will try to get Finance on a review after we see the update — ideally before year-end.\nCasey Nguyen: Competitor-wise we are not in a bake-off; it is mostly Apollo versus improving our messy Salesforce data manually.\nAlex Reed: Next step is the updated proposal and confirming the finance review.\nJordan Blake: Yes.",
+    "summary": "October 28 follow-up on the existing Apollo Sales Intelligence Platform evaluation already in proposal stage (OPP-001). Stakeholders explicitly want one commercial platform initiative, not a second Opportunity, and distinguish it from the separate SDR contact-data pilot. Security questionnaire in progress; proposal revision and finance review are next.",
     "action_items": [
       "AE to send updated Apollo platform proposal with seat and enrichment tiers.",
       "Casey to continue security questionnaire with updated Salesforce field mapping.",
-      "Jordan to schedule Finance review after proposal revision."
+      "Jordan to schedule Finance review after proposal revision (target before year-end)."
     ],
     "linked_task_key": "TSK-003",
-    "fixture_note": "SYNTHETIC Granola-style fixture. Matches existing open Opportunity OPP-001 for SCENARIO-03."
+    "fixture_note": "SYNTHETIC Granola-style fixture (not live Granola). Matches existing open Opportunity OPP-001 for SCENARIO-03. Dated Oct 2026."
   },
   {
     "meeting_key": "MTG-004",
     "meeting_id": "granola-syn-mtg-004",
     "title": "Networking — Northwind Retail Group Intro Coffee",
-    "start_time": "2026-02-06T15:30:00Z",
-    "end_time": "2026-02-06T16:00:00Z",
+    "start_time": "2026-10-08T15:30:00Z",
+    "end_time": "2026-10-08T16:00:00Z",
     "account_key": "ACC-003",
     "account_name": "Northwind Retail Group",
     "attendees": [
@@ -153,14 +153,58 @@
         "contact_key": "CON-008"
       }
     ],
-    "transcript": "Alex Reed: Thanks for the coffee. Good seeing you at the retail partners summit.\nTaylor Brooks: Likewise. Mostly a casual catch-up — no agenda on my side.\nAlex Reed: How is the team after the Apollo rollout for wholesale and enterprise partnership sellers?\nTaylor Brooks: Stabilization mode. Reps are adopting sequences and cleaning contacts. I am deliberately not opening expansion conversations this half — no extra seats, no new modules, nothing like that.\nAlex Reed: Anything bubbling as a problem worth solving later?\nTaylor Brooks: Nothing I would call a project. If something comes up it would be much later, and it would not be a discovery motion right now.\nMorgan Ellis: (joining briefly) Hey — just saying hello. Hard stop on my side. Nice to meet you, Alex.\nAlex Reed: Nice to meet you as well.\nMorgan Ellis: Carry on — I am not here for a business discussion.\nTaylor Brooks: Happy to stay connected. If you have a useful industry newsletter, send it. Otherwise coffee again when you are in Chicago.\nAlex Reed: Sounds good. No product demo, no expansion proposal — just stay in touch?\nTaylor Brooks: Exactly. Networking only.",
-    "summary": "Informal networking with Northwind Partnerships. Northwind is already an Apollo customer; Taylor explicitly declined expansion evaluation. CEO stopped by socially with no commercial agenda. No business problem, Apollo use case, or buying initiative identified.",
+    "transcript": "Alex Reed: Thanks for the coffee. Good seeing you at the retail partners summit last week.\nTaylor Brooks: Likewise. Mostly a casual catch-up — no agenda on my side.\nAlex Reed: How is the team after the Apollo rollout for wholesale and enterprise partnership sellers?\nTaylor Brooks: Stabilization mode. Reps are adopting sequences and cleaning contacts. I am deliberately not opening expansion conversations this half — no extra seats, no new modules, nothing like that.\nAlex Reed: Anything bubbling as a problem worth solving later?\nTaylor Brooks: Nothing I would call a project. If something comes up it would be much later, and it would not be a discovery motion right now.\nMorgan Ellis: (joining briefly) Hey — just saying hello. Hard stop on my side. Nice to meet you, Alex.\nAlex Reed: Nice to meet you as well.\nMorgan Ellis: Carry on — I am not here for a business discussion.\nTaylor Brooks: Happy to stay connected. If you have a useful industry newsletter, send it. Otherwise coffee again when you are in Chicago.\nAlex Reed: Sounds good. No product demo, no expansion proposal — just stay in touch?\nTaylor Brooks: Exactly. Networking only.",
+    "summary": "October 8 informal networking with Northwind Partnerships. Northwind is already an Apollo customer; Taylor explicitly declined expansion evaluation this half. CEO stopped by socially with no commercial agenda. No business problem, Apollo use case, or buying initiative identified.",
     "action_items": [
       "AE may optionally share an industry newsletter.",
       "Keep relationship warm; do not open an expansion evaluation thread.",
       "No discovery follow-up or Opportunity creation requested."
     ],
     "linked_task_key": "TSK-009",
-    "fixture_note": "SYNTHETIC Granola-style fixture. SCENARIO-04 networking / no new opportunity."
+    "fixture_note": "SYNTHETIC Granola-style fixture (not live Granola). SCENARIO-04 networking / no new opportunity. Dated Oct 2026."
+  },
+  {
+    "meeting_key": "MTG-005",
+    "meeting_id": "granola-syn-mtg-005",
+    "title": "Follow-up — Meridian Robotics SDR Pilot Scoping",
+    "start_time": "2026-11-12T17:00:00Z",
+    "end_time": "2026-11-12T17:35:00Z",
+    "account_key": "ACC-001",
+    "account_name": "Meridian Robotics",
+    "attendees": [
+      {
+        "name": "Alex Reed",
+        "title": "Account Executive",
+        "email": "alex.reed@apollo.example.com",
+        "role": "seller"
+      },
+      {
+        "name": "Jordan Blake",
+        "title": "VP of Sales",
+        "email": "jordan.blake@meridian-robotics.example.com",
+        "contact_key": "CON-001"
+      },
+      {
+        "name": "Sam Rivera",
+        "title": "Manager, Sales Development",
+        "email": "sam.rivera@meridian-robotics.example.com",
+        "contact_key": "CON-002"
+      },
+      {
+        "name": "Casey Nguyen",
+        "title": "Sales Operations Manager",
+        "email": "casey.nguyen@meridian-robotics.example.com",
+        "contact_key": "CON-003"
+      }
+    ],
+    "transcript": "Alex Reed: Thanks for making the pilot scoping time — I know this slipped a few weeks from our October 14 discovery.\nJordan Blake: Yeah. Same SDR contact-data initiative we started then. Still interested. Still not the AE platform deal — that is the separate proposal track.\nSam Rivera: I can put four SDRs on a 60-day pilot if the data quality is decent. Day-to-day owner is still me. We have not started anything yet — no Salesforce Opportunity on our side that I know of for this pilot.\nCasey Nguyen: I still need an explicit field-mapping diagram before any write-back. I can support a staged pilot; I do not own budget.\nAlex Reed: Has anything changed on budget or timing since October?\nJordan Blake: Pilot funding from my sales budget is still fine. Finance is still not engaged for a broader rollout. Ideal start would be early January after the holiday push — not this month.\nSam Rivera: Success for me is less research time per account and fewer bounces into sequences. I still do not have a formal baseline export ready.\nAlex Reed: Any new vendors in the mix?\nJordan Blake: No. Still Apollo versus status quo. Please do not merge this into the platform Opportunity — different buying motion.\nAlex Reed: Next step — confirm pilot scope (four SDRs, Salesforce write-back staging) and whether you want me to open a Salesforce Opportunity for this SDR pilot now.\nJordan Blake: Yes on scope. On the Opportunity — if you have not created one yet, we should so my team can track it. Just keep it separate from the AE platform deal.",
+    "summary": "November 12 continuation of the October 14 Meridian SDR outbound / contact-data initiative. Pilot scope clarified (four SDRs, ~60 days, early-January start target). Finance still not engaged; metrics still informal. Explicitly distinct from the open AE-platform Opportunity. Jordan asks for a Salesforce Opportunity if one does not already exist — Skill should confirm initiative status before creating.",
+    "action_items": [
+      "Confirm whether an SDR/contact-data Opportunity already exists before creating a new one.",
+      "AE to send staged Salesforce field-mapping diagram for pilot write-back.",
+      "Align on early-January pilot start with four SDRs; Sam as day-to-day owner."
+    ],
+    "linked_task_key": "TSK-011",
+    "fixture_note": "SYNTHETIC Granola-style fixture (not live Granola). SCENARIO-05 CREATE after initiative-status confirmation — same initiative as MTG-001, progressed, still no matching open Opp. Most recent fixture as of Nov 16, 2026 demo."
   }
 ]

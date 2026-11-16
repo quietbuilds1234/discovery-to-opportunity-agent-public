@@ -1,98 +1,112 @@
 # Discovery-to-Opportunity Agent
 
-A Claude Skill that helps a sales representative turn a discovery meeting into a well-structured Salesforce Opportunity — with CRM context, MEDDPICC enrichment, duplicate detection, and explicit human approval before any write.
+A Claude Skill that helps a BDR (or AE) turn a discovery meeting into a well-structured Salesforce Opportunity — with CRM context, BANT/MEDDPICC coaching, duplicate detection, and explicit human approval before any write.
 
 Interview framing: synthetic demo data models **Apollo** (sales intelligence / GTM) prospects and discovery conversations.
 
-> **Status:** Apollo synthetic dataset imported into Salesforce `discovery-dev` (30 records verified). Claude ↔ Salesforce MCP **not connected yet**. See [docs/checkpoint.md](docs/checkpoint.md) for the latest handoff.
+**Version:** Skill package **v0.3.0** (`skill/discovery-to-opportunity/`, `metadata.version` in `SKILL.md`).
 
 ---
 
-## Business Problem
+## Intended BDR workflow
 
-After discovery meetings, reps have rich context about pain, stakeholders, and buying intent — but turning that into a Salesforce Opportunity is slow and error-prone. They must review notes, look up Accounts and Contacts, check for existing deals, map unstructured conversation into CRM fields, and figure out what qualification gaps matter next.
+1. Confirm the meeting (packaged simulated Granola fixtures — **no Salesforce queries yet**).
+2. Analyze the full transcript; retrieve Account → Contacts → Opportunities (+ optional OCR/Tasks) via Hosted MCP.
+3. Decide outcome: **CREATE** / **CREATE WITH GAPS** / **EXISTING OPPORTUNITY** / **DO NOT CREATE** (INSUFFICIENT INFORMATION).
+4. Ask high-leverage clarifications **one at a time** (BANT + MEDDPICC coaching — not creation gates).
+5. Preview Opportunity fields + OCR associations + full AE handoff in **`Handoff_Notes__c`**.
+6. Require **explicit** approval of that preview → create Opp (with handoff) → OCRs for existing Contacts → verify reads.
+7. **Never delete.** Do not create Contacts. Do not invent Role/`IsPrimary` from title or attendance alone.
 
-That friction leads to incomplete CRM data, inconsistent Opportunity records, and unnecessary admin work.
+Fixtures: Oct–Nov 2026 (5 meetings; newest `MTG-005`). CRM: **one** Salesforce Hosted MCP connector (`sobject-all`) — Free-plan one-connector limit; see [docs/architecture.md](docs/architecture.md).
 
-## Proposed Solution
+There is **no live Granola integration**. Claude.ai cannot read the repo `data/` folder; meetings ship in `fixtures/granola_meetings.json`.
 
-An intelligent sales operations assistant (Claude Skill) that:
+## Decision outcomes & scenarios
 
-1. Ingests discovery meeting information (Granola when available; otherwise labeled synthetic fixtures).
-2. Retrieves related Salesforce Account, Contact, Opportunity, Task, and Opportunity Contact Role context.
-3. Proposes a structured Opportunity with mapped fields and a MEDDPICC assessment.
-4. Flags duplicates, gaps, and recommended follow-up questions.
-5. Creates the Opportunity in Salesforce only after explicit rep approval.
+| Outcome | Meeting (demo) | Notes |
+|---|---|---|
+| CREATE | MTG-001 | New SDR/contact-data initiative; not OPP-001 (AE platform) |
+| CREATE WITH GAPS | MTG-002 | Early need; not OPP-002 (partner-lead) |
+| EXISTING OPPORTUNITY | MTG-003 | Same initiative as open OPP-001 |
+| DO NOT CREATE | MTG-004 | Networking / no buying initiative |
+| CREATE (or EXISTING) | MTG-005 | Continuation of MTG-001; EXISTING if SDR Opp already created |
 
-MEDDPICC is used to enrich and guide — not to block legitimate Opportunity creation.
+Duplicate detection compares **initiative** (use case / scope / buying motion), not Account or Contact overlap alone. Details: `tests/scenarios.md`, `tests/expected_outcomes.json`.
 
-## Intended Users
-
-Individual Account Executives / sales representatives using Claude after a discovery meeting.
-
-The experience should feel conversational and assistive, not like a rigid form or compliance checklist.
-
-## High-Level Architecture
+## High-level architecture
 
 ```text
-Rep (Claude) → Discovery-to-Opportunity Skill
-                 ├── Meeting context (Granola or synthetic fixtures)
-                 ├── Decision & qualification references (MEDDPICC, field mapping)
-                 └── Salesforce (standard objects; runtime connection TBD)
-                        Account | Contact | Opportunity | Task | OpportunityContactRole
+Rep (Claude.ai) → Discovery-to-Opportunity Skill v0.3.0
+                    ├── fixtures/granola_meetings.json
+                    ├── references (decision, qualification, mapping, retrieval, writes)
+                    └── Salesforce Hosted MCP (sobject-all)
+                           reads + approved writes; never delete
 ```
 
-- **Claude Skill** is the user experience and orchestration layer.
-- **Salesforce** is the primary external system for real CRM reads/writes.
-- **Local Salesforce CLI** (`discovery-dev`) supports development and synthetic data seeding only; it does not automatically grant Claude runtime CRM access.
-- **No custom backend or custom MCP server** in this interview scope.
+- **Salesforce CLI (`discovery-dev`)** — local seeding/inspection only; not Claude or Cursor runtime CRM access.
+- **No custom backend / custom MCP server.**
 
-See [docs/architecture.md](docs/architecture.md) for more detail.
+Exact MCP tools: `mcp__Salesforce__soqlQuery`, `find`, `getRelatedRecords`, `listRecentSobjectRecords`, `getObjectSchema`, `getUserInfo`, `createSobjectRecord`, `updateSobjectRecord`, `updateRelatedRecord` (documented in Skill references).
 
-## Planned Functionality
+## Validation status (precise)
 
-| Capability | Phase |
-|---|---|
-| Project context, architecture, demo decisions | **Current** |
-| Synthetic CRM + meeting fixtures and test scenarios | Planned |
-| Claude Skill with decision framework and field mapping | Planned |
-| Salesforce org validation and data load scripts | Planned |
-| Runtime Salesforce create (with explicit approval) | Planned |
-| Demo script and sales user guide | Planned |
+| What was validated | How | Result |
+|---|---|---|
+| Synthetic fixture consistency (counts, keys, packaged≡canonical meetings) | `scripts/validate_synthetic_data.py` | PASS |
+| Write-safety mocks (approval gate, duplicate re-check, OCR Role/`IsPrimary` omit rules, handoff reject/verify mismatch, timeouts, MTG-001→MTG-005 EXISTING variant) | `tests/test_write_workflow_guards.py` (30 tests) | PASS |
+| MTG-003 / MTG-004 fixture↔expected-outcome alignment | Read-only fixture review vs `expected_outcomes.json` | Aligned (not a unittest module) |
+| Org seed (pre–MTG-005) | `discovery-dev` import 2026-11-12 (30 records) | Verified then |
+| Live Claude MCP Opportunity create + OCR + `Handoff_Notes__c` + post-write verify | — | **Not executed** |
 
-## Technology Assumptions
+## Technology assumptions
 
-- Claude Skill for the agent experience
-- Salesforce Developer Org + Salesforce CLI alias `discovery-dev`
-- Standard Salesforce objects only
-- Synthetic data for a fictional sales environment
-- Granola meeting access is assumed but must be validated; fixtures used if unavailable
+- Claude Skill (Claude.ai installable package), v0.3.0
+- Salesforce Developer Org + CLI alias `discovery-dev` for seeding
+- One Salesforce Hosted MCP connector: `sobject-all` (Claude Free-plan one-connector limit)
+- Simulated Granola via packaged JSON (canonical copy in `data/granola_meetings.json`)
+- Standard Salesforce objects + org field `Handoff_Notes__c`
+- CloseDate: future vs demo “today” (~2026-11-16); ask if unknown
 - Private GitHub repository; no secrets in source control
 
-## Repository Layout (Planned)
+## Repository layout
 
 ```text
 discovery-to-opportunity-agent/
-├── skill/discovery-to-opportunity/   # Claude Skill (planned)
-├── data/                           # Synthetic fixtures (planned)
-├── tests/                          # Scenarios & expected outcomes (planned)
-├── docs/                           # Architecture & demo docs
-├── scripts/load_salesforce_data/   # Org seeding (planned)
-├── PROJECT_CONTEXT.md              # Full requirements
+├── skill/discovery-to-opportunity/   # Canonical Skill source (+ release ZIP)
+│   ├── SKILL.md                   # metadata.version 0.3.0
+│   ├── CHANGELOG.md
+│   ├── INSTALL.md
+│   ├── fixtures/granola_meetings.json
+│   ├── references/
+│   └── examples/
+├── data/                          # Canonical fixtures + CRM seed JSON
+├── tests/                         # scenarios, expected_outcomes, write-guard tests
+├── docs/architecture.md
+├── docs/demo-decisions.md
+├── scripts/
+├── PROJECT_CONTEXT.md
 └── README.md
 ```
+
+Package for Claude.ai: zip the **contents** of `skill/discovery-to-opportunity/` so **`SKILL.md` is at the ZIP root** (see `INSTALL.md`). Keep `skill/discovery-to-opportunity.zip` in sync when releasing.
 
 ## Documentation
 
 | Doc | Purpose |
 |---|---|
-| [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) | Full requirements, principles, workflow |
-| [docs/architecture.md](docs/architecture.md) | Architecture overview |
-| [docs/demo-decisions.md](docs/demo-decisions.md) | Assumptions and design decisions |
+| [PROJECT_CONTEXT.md](PROJECT_CONTEXT.md) | Requirements source of truth |
+| [docs/architecture.md](docs/architecture.md) | Architecture + `sobject-all` rationale |
+| [docs/demo-decisions.md](docs/demo-decisions.md) | Decisions, fixture limits, validation log |
+| [tests/scenarios.md](tests/scenarios.md) | Five scenarios + manual runbook |
+| [skill/.../INSTALL.md](skill/discovery-to-opportunity/INSTALL.md) | Claude.ai install |
+| [skill/.../CHANGELOG.md](skill/discovery-to-opportunity/CHANGELOG.md) | Skill release notes (v0.3.0) |
 
-## What Is Explicitly Out of Scope (for now)
+## Out of scope (v0.3.0)
 
-- Building the Skill implementation
-- Creating or modifying Salesforce records
+- Live Granola product integration
+- Salesforce **delete** (Skill-forbidden; MCP-layer disablement not independently verified)
+- Separate Claude connectors for `sobject-reads` + `sobject-mutations`
 - Custom backends / custom MCP servers
-- Claiming Granola or Salesforce runtime access works before verification
+- Claiming Claude or Cursor can read the local repo `data/` directory
+- Storing OAuth secrets in the repo

@@ -2,16 +2,31 @@
   {
     "scenario_key": "SCENARIO-01",
     "expected_outcome": "CREATE",
+    "conversational_label": "Opportunity identified",
+    "requires_meeting_confirmation": true,
+    "requires_initiative_status_confirmation": true,
+    "ae_handoff_note_required": true,
     "referenced_record_keys": {
       "account_key": "ACC-001",
-      "contact_keys": ["CON-001", "CON-002", "CON-003"],
-      "opportunity_keys_context": ["OPP-001", "OPP-004"],
-      "task_keys": ["TSK-001", "TSK-004", "TSK-005"],
+      "contact_keys": [
+        "CON-001",
+        "CON-002",
+        "CON-003"
+      ],
+      "opportunity_keys_context": [
+        "OPP-001",
+        "OPP-004"
+      ],
+      "task_keys": [
+        "TSK-001",
+        "TSK-004",
+        "TSK-005"
+      ],
       "meeting_key": "MTG-001"
     },
     "duplicate_detection_expectation": {
       "should_flag_duplicate": false,
-      "notes": "OPP-001 is AE-focused Apollo Sales Intelligence Platform; MTG-001 is SDR outbound research / contact-data pilot — related account, different initiative."
+      "notes": "OPP-001 is AE-focused Apollo Sales Intelligence Platform; MTG-001 is SDR outbound research / contact-data pilot \u2014 related account, different initiative."
     },
     "opportunity_creation_allowed": true,
     "mandatory_information_gaps": [],
@@ -19,56 +34,78 @@
       "Metrics": {
         "status": "INFERRED",
         "evidence": "Jordan wants more qualified first meetings and less SDR research time; no precise dollar model.",
-        "source_record_keys": ["MTG-001", "TSK-001", "TSK-004"],
+        "source_record_keys": [
+          "MTG-001",
+          "TSK-001",
+          "TSK-004"
+        ],
         "rationale": "Directional success ideas; not confirmed baseline/$ impact.",
         "follow_up_question": "What are current SDR research hours per day and meetings booked per week for the mid-market warehouse motion?"
       },
       "Economic Buyer": {
         "status": "UNKNOWN",
         "evidence": "Jordan can fund a pilot from sales budget; Finance not engaged for broader rollout.",
-        "source_record_keys": ["MTG-001"],
-        "rationale": "Pilot authority ≠ confirmed Economic Buyer for enterprise purchase.",
+        "source_record_keys": [
+          "MTG-001"
+        ],
+        "rationale": "Pilot authority \u2260 confirmed Economic Buyer for enterprise purchase.",
         "follow_up_question": "Who would approve budget if the pilot expands beyond Sales discretionary spend?"
       },
       "Decision Criteria": {
         "status": "INFERRED",
         "evidence": "Data quality, usable contacts for sequences, controlled Salesforce write-back mentioned.",
-        "source_record_keys": ["MTG-001", "TSK-005"],
+        "source_record_keys": [
+          "MTG-001",
+          "TSK-005"
+        ],
         "rationale": "Criteria discussed informally, not formalized.",
         "follow_up_question": "Can we capture written pilot acceptance criteria for data quality and Salesforce hygiene?"
       },
       "Decision Process": {
         "status": "UNKNOWN",
         "evidence": "Pilot scoping agreed; full governance path not described.",
-        "source_record_keys": ["MTG-001"],
+        "source_record_keys": [
+          "MTG-001"
+        ],
         "rationale": "Next step exists; purchase process does not.",
         "follow_up_question": "What steps and approvers sit between a successful pilot and a production purchase?"
       },
       "Paper Process": {
         "status": "UNKNOWN",
         "evidence": "Security/field-mapping raised by Sales Ops; full paper process not mapped.",
-        "source_record_keys": ["MTG-001", "TSK-005"],
+        "source_record_keys": [
+          "MTG-001",
+          "TSK-005"
+        ],
         "rationale": "Ops constraints noted; procurement path unknown.",
         "follow_up_question": "What security, legal, and procurement steps are required for a paid pilot?"
       },
       "Identify Pain": {
         "status": "CONFIRMED",
         "evidence": "SDRs spend hours researching; bounced/outdated contacts; insufficient qualified meetings for mid-market motion.",
-        "source_record_keys": ["MTG-001", "TSK-001"],
+        "source_record_keys": [
+          "MTG-001",
+          "TSK-001"
+        ],
         "rationale": "Explicit Apollo-relevant pain from Sales and SDR leadership.",
         "follow_up_question": null
       },
       "Champion": {
         "status": "INFERRED",
         "evidence": "Sam offered day-to-day ownership; Jordan driving next steps.",
-        "source_record_keys": ["MTG-001"],
+        "source_record_keys": [
+          "MTG-001"
+        ],
         "rationale": "Engaged advocates; influence vs Finance unproven.",
         "follow_up_question": "Who will actively sell this internally if Finance pushes back?"
       },
       "Competition": {
         "status": "INFERRED",
         "evidence": "Prior cheaper contact-only vendor failed; nothing active now.",
-        "source_record_keys": ["MTG-001", "OPP-004"],
+        "source_record_keys": [
+          "MTG-001",
+          "OPP-004"
+        ],
         "rationale": "History noted; not an active bake-off.",
         "follow_up_question": "Are any other sales intelligence vendors currently in evaluation?"
       }
@@ -78,21 +115,35 @@
       "Who would approve budget if the pilot expands beyond Sales discretionary spend?",
       "What steps and approvers sit between a successful pilot and a production purchase?"
     ],
-    "expected_rep_interaction": "Present Opportunity preview; allow answer/skip on questions; create only after explicit approval."
+    "expected_rep_interaction": "Present Opportunity preview; allow answer/skip on questions; create only after explicit approval.",
+    "handoff_field": "Handoff_Notes__c",
+    "ae_handoff_required": true
   },
   {
     "scenario_key": "SCENARIO-02",
     "expected_outcome": "CREATE WITH GAPS",
+    "conversational_label": "Potential opportunity \u2014 needs clarification",
+    "requires_meeting_confirmation": true,
+    "ae_handoff_note_required": true,
     "referenced_record_keys": {
       "account_key": "ACC-002",
-      "contact_keys": ["CON-004", "CON-005"],
-      "opportunity_keys_context": ["OPP-002"],
-      "task_keys": ["TSK-002", "TSK-006", "TSK-007"],
+      "contact_keys": [
+        "CON-004",
+        "CON-005"
+      ],
+      "opportunity_keys_context": [
+        "OPP-002"
+      ],
+      "task_keys": [
+        "TSK-002",
+        "TSK-006",
+        "TSK-007"
+      ],
       "meeting_key": "MTG-002"
     },
     "duplicate_detection_expectation": {
       "should_flag_duplicate": false,
-      "notes": "OPP-002 is partner-sourced lead enrichment; MTG-002 is hospital/clinic buying-group identification and CRM contact quality for direct outbound — different initiative. Meeting explicitly separates the partner-lead thread."
+      "notes": "OPP-002 is partner-sourced lead enrichment; MTG-002 is hospital/clinic buying-group identification and CRM contact quality for direct outbound \u2014 different initiative. Meeting explicitly separates the partner-lead thread."
     },
     "opportunity_creation_allowed": true,
     "mandatory_information_gaps": [],
@@ -100,56 +151,77 @@
       "Metrics": {
         "status": "UNKNOWN",
         "evidence": "Riley stated no formal baseline metric package.",
-        "source_record_keys": ["MTG-002", "TSK-002"],
+        "source_record_keys": [
+          "MTG-002",
+          "TSK-002"
+        ],
         "rationale": "Pain qualitative only.",
         "follow_up_question": "What KPIs (bounce rate, connect rate, meetings booked) should define success?"
       },
       "Economic Buyer": {
         "status": "UNKNOWN",
         "evidence": "Avery said ownership unclear; Finance not involved; RevOps not present.",
-        "source_record_keys": ["MTG-002", "TSK-006"],
+        "source_record_keys": [
+          "MTG-002",
+          "TSK-006"
+        ],
         "rationale": "No budget owner identified.",
         "follow_up_question": "Who owns budget for sales intelligence / enrichment tooling?"
       },
       "Decision Criteria": {
         "status": "UNKNOWN",
         "evidence": "Desire for better contacts and buying-group maps; no formal criteria.",
-        "source_record_keys": ["MTG-002"],
-        "rationale": "Feature interest ≠ decision criteria.",
+        "source_record_keys": [
+          "MTG-002"
+        ],
+        "rationale": "Feature interest \u2260 decision criteria.",
         "follow_up_question": "What must a solution do to be worth an evaluation?"
       },
       "Decision Process": {
         "status": "UNKNOWN",
         "evidence": "No evaluation plan; check back after sales planning.",
-        "source_record_keys": ["MTG-002", "TSK-007"],
+        "source_record_keys": [
+          "MTG-002",
+          "TSK-007"
+        ],
         "rationale": "Process undefined.",
         "follow_up_question": "What does your evaluation process look like when sales tooling moves from concept to purchase?"
       },
       "Paper Process": {
         "status": "UNKNOWN",
         "evidence": "Not discussed.",
-        "source_record_keys": ["MTG-002"],
+        "source_record_keys": [
+          "MTG-002"
+        ],
         "rationale": "No procurement/security path described.",
         "follow_up_question": "What procurement and security reviews are required for sales tools that write to Salesforce?"
       },
       "Identify Pain": {
         "status": "CONFIRMED",
         "evidence": "Hard to find hospital buying-group stakeholders; high bounce rates; CRM contacts outdated.",
-        "source_record_keys": ["MTG-002", "TSK-002"],
+        "source_record_keys": [
+          "MTG-002",
+          "TSK-002"
+        ],
         "rationale": "Clear Apollo-relevant operational pain without quantified metrics.",
         "follow_up_question": null
       },
       "Champion": {
         "status": "AT_RISK",
         "evidence": "Riley likes the idea but will not champion an RFP; Avery will socialize only.",
-        "source_record_keys": ["MTG-002", "TSK-007"],
+        "source_record_keys": [
+          "MTG-002",
+          "TSK-007"
+        ],
         "rationale": "Interest without internal selling commitment.",
         "follow_up_question": "Who will drive this internally if leadership bandwidth stays tight?"
       },
       "Competition": {
         "status": "UNKNOWN",
         "evidence": "No formal vendor comparison started.",
-        "source_record_keys": ["MTG-002"],
+        "source_record_keys": [
+          "MTG-002"
+        ],
         "rationale": "Competition not assessed.",
         "follow_up_question": "Are you comparing any other sales intelligence or enrichment tools?"
       }
@@ -160,18 +232,35 @@
       "What does your evaluation process look like when sales tooling moves from concept to purchase?",
       "Who will drive this internally if leadership bandwidth stays tight?"
     ],
-    "expected_rep_interaction": "Emphasize gaps; allow skip-all and proceed; do not treat OPP-002 as duplicate; create only after explicit approval."
+    "expected_rep_interaction": "Emphasize gaps; allow skip-all and proceed; do not treat OPP-002 as duplicate; create only after explicit approval.",
+    "handoff_field": "Handoff_Notes__c",
+    "ae_handoff_required": true
   },
   {
     "scenario_key": "SCENARIO-03",
     "expected_outcome": "EXISTING OPPORTUNITY",
+    "conversational_label": "Existing Opportunity found",
+    "requires_meeting_confirmation": true,
+    "ae_handoff_note_required": false,
     "referenced_record_keys": {
       "account_key": "ACC-001",
-      "contact_keys": ["CON-001", "CON-002", "CON-003"],
-      "opportunity_keys": ["OPP-001"],
-      "task_keys": ["TSK-003", "TSK-008"],
+      "contact_keys": [
+        "CON-001",
+        "CON-002",
+        "CON-003"
+      ],
+      "opportunity_keys": [
+        "OPP-001"
+      ],
+      "task_keys": [
+        "TSK-003",
+        "TSK-008"
+      ],
       "meeting_key": "MTG-003",
-      "ocr_keys": ["OCR-001", "OCR-002"]
+      "ocr_keys": [
+        "OCR-001",
+        "OCR-002"
+      ]
     },
     "duplicate_detection_expectation": {
       "should_flag_duplicate": true,
@@ -186,56 +275,78 @@
       "Metrics": {
         "status": "INFERRED",
         "evidence": "Bounce-rate improvement and usable mobile numbers cited as acceptance criteria.",
-        "source_record_keys": ["OPP-001", "MTG-003"],
+        "source_record_keys": [
+          "OPP-001",
+          "MTG-003"
+        ],
         "rationale": "Operational criteria exist; $ metrics not restated in this follow-up.",
         "follow_up_question": "Which ROI metrics will Finance expect in the review session?"
       },
       "Economic Buyer": {
         "status": "UNKNOWN",
         "evidence": "Finance review planned but not completed.",
-        "source_record_keys": ["MTG-003", "TSK-008"],
+        "source_record_keys": [
+          "MTG-003",
+          "TSK-008"
+        ],
         "rationale": "Finance not yet confirmed as engaged Economic Buyer.",
         "follow_up_question": "Who from Finance will attend the proposal review?"
       },
       "Decision Criteria": {
         "status": "CONFIRMED",
         "evidence": "Bounce-rate and sequence-ready contact criteria reaffirmed.",
-        "source_record_keys": ["MTG-003"],
+        "source_record_keys": [
+          "MTG-003"
+        ],
         "rationale": "Stakeholders reaffirmed criteria.",
         "follow_up_question": null
       },
       "Decision Process": {
         "status": "INFERRED",
-        "evidence": "Proposal revision → Finance review → likely decision path.",
-        "source_record_keys": ["MTG-003", "OPP-001"],
+        "evidence": "Proposal revision \u2192 Finance review \u2192 likely decision path.",
+        "source_record_keys": [
+          "MTG-003",
+          "OPP-001"
+        ],
         "rationale": "Partial process visible; full map incomplete.",
         "follow_up_question": "After Finance review, what remaining approvals are required?"
       },
       "Paper Process": {
         "status": "INFERRED",
         "evidence": "Security questionnaire ~70% complete; Salesforce field mapping in progress.",
-        "source_record_keys": ["MTG-003", "TSK-008"],
+        "source_record_keys": [
+          "MTG-003",
+          "TSK-008"
+        ],
         "rationale": "Security paper started; legal/procurement not fully described.",
         "follow_up_question": "What remains after the security questionnaire for contracting?"
       },
       "Identify Pain": {
         "status": "CONFIRMED",
         "evidence": "AE prospecting inefficiency and Salesforce contact hygiene remain the problem being solved by OPP-001.",
-        "source_record_keys": ["TSK-003", "OPP-001"],
+        "source_record_keys": [
+          "TSK-003",
+          "OPP-001"
+        ],
         "rationale": "Consistent with open Opportunity description.",
         "follow_up_question": null
       },
       "Champion": {
         "status": "INFERRED",
         "evidence": "Jordan continues to drive; Sam owns SDR acceptance criteria; Casey owns Salesforce ops.",
-        "source_record_keys": ["MTG-003", "OCR-001"],
+        "source_record_keys": [
+          "MTG-003",
+          "OCR-001"
+        ],
         "rationale": "Strong engagement; champion vs Economic Buyer still distinct.",
         "follow_up_question": null
       },
       "Competition": {
         "status": "CONFIRMED",
         "evidence": "Casey: primarily against improving messy Salesforce data manually; no active bake-off.",
-        "source_record_keys": ["MTG-003"],
+        "source_record_keys": [
+          "MTG-003"
+        ],
         "rationale": "Status-quo competitor explicitly stated.",
         "follow_up_question": null
       }
@@ -244,22 +355,37 @@
       "Should this meeting activity be associated with existing Opportunity OPP-001?",
       "Who from Finance will attend the proposal review?"
     ],
-    "expected_rep_interaction": "Block create until duplicate risk resolved; offer associate-to-existing vs investigate; never auto-create."
+    "expected_rep_interaction": "Block create until duplicate risk resolved; offer associate-to-existing vs investigate; never auto-create.",
+    "handoff_field": "Handoff_Notes__c",
+    "ae_handoff_required": false
   },
   {
     "scenario_key": "SCENARIO-04",
     "expected_outcome": "INSUFFICIENT INFORMATION",
-    "alternate_acceptable_outcomes": ["DO_NOT_CREATE"],
+    "conversational_label": "No opportunity identified",
+    "alternate_acceptable_outcomes": [
+      "DO_NOT_CREATE"
+    ],
+    "requires_meeting_confirmation": true,
+    "ae_handoff_note_required": false,
     "referenced_record_keys": {
       "account_key": "ACC-003",
-      "contact_keys": ["CON-007", "CON-008"],
-      "opportunity_keys_context": ["OPP-003"],
-      "task_keys": ["TSK-009", "TSK-010"],
+      "contact_keys": [
+        "CON-007",
+        "CON-008"
+      ],
+      "opportunity_keys_context": [
+        "OPP-003"
+      ],
+      "task_keys": [
+        "TSK-009",
+        "TSK-010"
+      ],
       "meeting_key": "MTG-004"
     },
     "duplicate_detection_expectation": {
       "should_flag_duplicate": false,
-      "notes": "Closed Won OPP-003 is historical Apollo deployment; MTG-004 is networking with explicit no-expansion stance — not a new initiative match requiring a new Opportunity."
+      "notes": "Closed Won OPP-003 is historical Apollo deployment; MTG-004 is networking with explicit no-expansion stance \u2014 not a new initiative match requiring a new Opportunity."
     },
     "opportunity_creation_allowed": false,
     "mandatory_information_gaps": [
@@ -271,56 +397,83 @@
       "Metrics": {
         "status": "UNKNOWN",
         "evidence": "No metrics discussed; meeting is social/networking only.",
-        "source_record_keys": ["MTG-004", "TSK-009", "TSK-010"],
+        "source_record_keys": [
+          "MTG-004",
+          "TSK-009",
+          "TSK-010"
+        ],
         "rationale": "Not an evaluation conversation.",
         "follow_up_question": null
       },
       "Economic Buyer": {
         "status": "UNKNOWN",
         "evidence": "CEO briefly said hello with no commercial agenda.",
-        "source_record_keys": ["MTG-004", "CON-008"],
+        "source_record_keys": [
+          "MTG-004",
+          "CON-008"
+        ],
         "rationale": "Social presence is not Economic Buyer confirmation for a new deal.",
         "follow_up_question": null
       },
       "Decision Criteria": {
         "status": "UNKNOWN",
         "evidence": "None.",
-        "source_record_keys": ["MTG-004", "TSK-009"],
+        "source_record_keys": [
+          "MTG-004",
+          "TSK-009"
+        ],
         "rationale": "No evaluation.",
         "follow_up_question": null
       },
       "Decision Process": {
         "status": "UNKNOWN",
         "evidence": "Taylor explicitly declined expansion evaluation this half.",
-        "source_record_keys": ["MTG-004", "TSK-010"],
+        "source_record_keys": [
+          "MTG-004",
+          "TSK-010"
+        ],
         "rationale": "Explicit non-buying signal.",
         "follow_up_question": null
       },
       "Paper Process": {
         "status": "UNKNOWN",
         "evidence": "None.",
-        "source_record_keys": ["MTG-004", "TSK-009"],
+        "source_record_keys": [
+          "MTG-004",
+          "TSK-009"
+        ],
         "rationale": "N/A.",
         "follow_up_question": null
       },
       "Identify Pain": {
         "status": "UNKNOWN",
         "evidence": "No new pain; focus on adoption stabilization of existing Apollo Closed Won deployment.",
-        "source_record_keys": ["MTG-004", "TSK-010", "OPP-003"],
+        "source_record_keys": [
+          "MTG-004",
+          "TSK-010",
+          "OPP-003"
+        ],
         "rationale": "Absence of pain distinguishes this from CREATE WITH GAPS.",
         "follow_up_question": null
       },
       "Champion": {
         "status": "UNKNOWN",
         "evidence": "Partnerships contact open to coffee/newsletter only.",
-        "source_record_keys": ["MTG-004", "TSK-009", "TSK-010"],
-        "rationale": "Relationship ≠ champion of a new deal.",
+        "source_record_keys": [
+          "MTG-004",
+          "TSK-009",
+          "TSK-010"
+        ],
+        "rationale": "Relationship \u2260 champion of a new deal.",
         "follow_up_question": null
       },
       "Competition": {
         "status": "UNKNOWN",
         "evidence": "None.",
-        "source_record_keys": ["MTG-004", "TSK-009"],
+        "source_record_keys": [
+          "MTG-004",
+          "TSK-009"
+        ],
         "rationale": "N/A.",
         "follow_up_question": null
       }
@@ -328,6 +481,145 @@
     "recommended_follow_up_questions": [
       "Is there a specific expansion or new GTM problem Northwind wants help with this half, separate from networking?"
     ],
-    "expected_rep_interaction": "Recommend against Opportunity creation; explain lack of initiative — not MEDDPICC incompleteness. Do not create."
+    "expected_rep_interaction": "Recommend against Opportunity creation; explain lack of initiative \u2014 not MEDDPICC incompleteness. Do not create.",
+    "handoff_field": "Handoff_Notes__c",
+    "ae_handoff_required": false
+  },
+  {
+    "scenario_key": "SCENARIO-05",
+    "expected_outcome": "CREATE",
+    "conversational_label": "Opportunity identified \u2014 confirm initiative status",
+    "requires_meeting_confirmation": true,
+    "requires_initiative_status_confirmation": true,
+    "ae_handoff_note_required": true,
+    "is_most_recent_fixture": true,
+    "referenced_record_keys": {
+      "account_key": "ACC-001",
+      "contact_keys": [
+        "CON-001",
+        "CON-002",
+        "CON-003"
+      ],
+      "opportunity_keys_context": [
+        "OPP-001",
+        "OPP-004"
+      ],
+      "task_keys": [
+        "TSK-011",
+        "TSK-001",
+        "TSK-004",
+        "TSK-005"
+      ],
+      "meeting_key": "MTG-005",
+      "prior_meeting_key": "MTG-001"
+    },
+    "duplicate_detection_expectation": {
+      "should_flag_duplicate": false,
+      "notes": "Same SDR/contact-data initiative as MTG-001 (progressed). No open CRM Opp for that pilot yet. OPP-001 is still a different AE-platform initiative \u2014 do not merge."
+    },
+    "crm_state_variants": [
+      {
+        "when": "Seeded demo: no open Opp for SDR/contact-data pilot",
+        "expected_outcome": "CREATE",
+        "should_flag_duplicate": false,
+        "opportunity_creation_allowed": true,
+        "notes": "Default SCENARIO-05 outcome. Confirm initiative status; do not merge into OPP-001."
+      },
+      {
+        "when": "Open Opp already exists for same SDR/contact-data initiative (e.g. after MTG-001 create)",
+        "expected_outcome": "EXISTING OPPORTUNITY",
+        "should_flag_duplicate": true,
+        "opportunity_creation_allowed": false,
+        "notes": "MTG-005 must not create a second SDR pilot Opp; associate or enrich existing. Demo fixture set does not include this Opp — variant for post-create / live CRM."
+      }
+    ],
+    "opportunity_creation_allowed": true,
+    "mandatory_information_gaps": [],
+    "close_date_guidance": "Future relative to demo today (2026-11-16); early-January 2027 pilot start is Confirmed intent \u2014 propose ~2027-01-31 or ask rep to confirm. Never reuse past CloseDates.",
+    "meddpicc_assessment": {
+      "Metrics": {
+        "status": "INFERRED",
+        "evidence": "Sam wants less research time and fewer bounces; no formal baseline export yet.",
+        "source_record_keys": [
+          "MTG-005",
+          "MTG-001"
+        ],
+        "rationale": "Directional pilot success ideas; not quantified.",
+        "follow_up_question": "Can we capture a baseline bounce rate and research hours before the January pilot?"
+      },
+      "Economic Buyer": {
+        "status": "UNKNOWN",
+        "evidence": "Jordan can fund pilot from sales budget; Finance still not engaged for broader rollout.",
+        "source_record_keys": [
+          "MTG-005"
+        ],
+        "rationale": "Pilot authority \u2260 enterprise Economic Buyer.",
+        "follow_up_question": "Who approves if the pilot expands beyond Sales discretionary spend?"
+      },
+      "Decision Criteria": {
+        "status": "INFERRED",
+        "evidence": "Data quality for four SDRs; staged Salesforce write-back; field-mapping required.",
+        "source_record_keys": [
+          "MTG-005",
+          "TSK-011"
+        ],
+        "rationale": "Pilot criteria clearer than Oct 14; not a formal RFP.",
+        "follow_up_question": null
+      },
+      "Decision Process": {
+        "status": "INFERRED",
+        "evidence": "Pilot first; broader purchase still undefined.",
+        "source_record_keys": [
+          "MTG-005"
+        ],
+        "rationale": "Pilot path clearer; production path unknown.",
+        "follow_up_question": "What happens after a successful 60-day pilot?"
+      },
+      "Paper Process": {
+        "status": "UNKNOWN",
+        "evidence": "Field-mapping/security constraints noted; procurement path not mapped.",
+        "source_record_keys": [
+          "MTG-005",
+          "TSK-005"
+        ],
+        "rationale": "Ops constraints \u2260 paper process.",
+        "follow_up_question": null
+      },
+      "Identify Pain": {
+        "status": "CONFIRMED",
+        "evidence": "Same SDR research/bounce/coverage pain; pilot scope of four SDRs confirmed.",
+        "source_record_keys": [
+          "MTG-005",
+          "MTG-001"
+        ],
+        "rationale": "Explicit continuation of Confirmed pain.",
+        "follow_up_question": null
+      },
+      "Champion": {
+        "status": "INFERRED",
+        "evidence": "Sam day-to-day owner; Jordan driving Opportunity tracking.",
+        "source_record_keys": [
+          "MTG-005"
+        ],
+        "rationale": "Engaged advocates; Finance influence unproven.",
+        "follow_up_question": null
+      },
+      "Competition": {
+        "status": "INFERRED",
+        "evidence": "Still Apollo versus status quo; no new vendors.",
+        "source_record_keys": [
+          "MTG-005"
+        ],
+        "rationale": "No active bake-off.",
+        "follow_up_question": null
+      }
+    },
+    "recommended_follow_up_questions": [
+      "Has an SDR/contact-data Opportunity already been created since the October 14 discovery?",
+      "Confirm Close Date for the pilot Opportunity (early January 2027 start)?"
+    ],
+    "expected_rep_interaction": "Confirm initiative still active and not already in CRM; distinguish from OPP-001; preview Opp + AE handoff; future Close Date with confirmation; create only after explicit approval (writes still off).",
+    "handoff_field": "Handoff_Notes__c",
+    "ae_handoff_required": true
   }
 ]

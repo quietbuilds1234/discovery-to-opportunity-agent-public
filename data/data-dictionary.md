@@ -15,9 +15,9 @@ Working ICP assumptions (not official Apollo thresholds): B2B orgs with sales/SD
 | Account | `ACC-00N` | ACC-001 … ACC-003 |
 | Contact | `CON-00N` | CON-001 … CON-008 |
 | Opportunity | `OPP-00N` | OPP-001 … OPP-004 |
-| Task | `TSK-00N` | TSK-001 … TSK-010 |
+| Task | `TSK-00N` | TSK-001 … TSK-011 |
 | Opportunity Contact Role | `OCR-00N` | OCR-001 … |
-| Granola meeting | `MTG-00N` | MTG-001 … MTG-004 |
+| Granola meeting | `MTG-00N` | MTG-001 … MTG-005 |
 | Gong activity id | `gong-act-…` | Local uniqueness only |
 | Granola meeting id | `granola-syn-mtg-00N` | Local fixture id only |
 
@@ -62,6 +62,8 @@ Working ICP assumptions (not official Apollo thresholds): B2B orgs with sales/SD
 
 Apollo-relevant deal names and descriptions. Required SF fields validated against `discovery-dev`.
 
+**AE handoff:** org custom field `Handoff_Notes__c` (Label: Handoff Notes; Long Text Area; 32,768). Not populated in seed JSON. Skill populates via Hosted MCP `sobject-all` only after explicit approval. Keep `Description` concise — do not store the full handoff there.
+
 ### `tasks.json` → Salesforce Task (Gong activity model)
 
 | Field | SF field | Notes |
@@ -72,14 +74,17 @@ Apollo-relevant deal names and descriptions. Required SF fields validated agains
 
 **Org note:** Task has no `Type` field on `discovery-dev`.
 
-### `granola_meetings.json` (local only)
+### `granola_meetings.json` (canonical local dataset)
 
 Full transcripts for Apollo-relevant discovery/networking conversations. Not imported to Salesforce.
 
+**Claude.ai runtime:** a byte-identical copy is packaged at `skill/discovery-to-opportunity/fixtures/granola_meetings.json` so the Skill can load meetings after install. Keep both files in sync. Claude.ai does not read this repo’s root `data/` directory automatically. This is **simulated Granola**, not a live Granola connection.
+
 ### Task mix
 
-- 4 meeting Tasks (`TSK-001`, `TSK-002`, `TSK-003`, `TSK-009`) ↔ `MTG-001`…`MTG-004`
+- 5 meeting Tasks (`TSK-001`, `TSK-002`, `TSK-003`, `TSK-009`, `TSK-011`) ↔ `MTG-001`…`MTG-005`
 - 6 Gong email Tasks (`TSK-004`…`TSK-008`, `TSK-010`)
+- Meeting dates span **October–November 2026** (demo “today” ≈ Nov 16, 2026). Newest meeting: `MTG-005`.
 
 ---
 
@@ -90,7 +95,8 @@ ACC-001 Meridian Robotics (B2B robotics seller; Salesforce; growing SDR/AE org)
   ├─ CON-001 VP Sales, CON-002 SDR Manager, CON-003 Sales Ops Manager
   ├─ OPP-001 Apollo Sales Intelligence Platform (open) ← OCR-001/002; TSK-003/008; MTG-003
   ├─ OPP-004 Standalone contact-data vendor (Closed Lost) ← OCR-005
-  └─ MTG-001 / TSK-001 (+ TSK-004/005) → SCENARIO-01 new SDR outbound / contact-data opp
+  ├─ MTG-001 / TSK-001 (+ TSK-004/005) → SCENARIO-01 new SDR outbound / contact-data opp (Oct 14)
+  └─ MTG-005 / TSK-011 → SCENARIO-05 continuation of SDR pilot (Nov 12; confirm status → CREATE)
 
 ACC-002 Cascade Health Partners (B2B healthcare services selling into providers)
   ├─ CON-004 VP Sales, CON-005 Senior SDR, CON-006 RevOps Manager

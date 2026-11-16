@@ -94,28 +94,25 @@ The goal is to encourage better CRM data, not enforce perfect qualification.
 
 ## 6. Technical Assumptions
 
-- The user experience is a Claude Skill.
-- Salesforce is the external CRM.
-- Reps use Claude and Granola.
-- Granola is assumed to be integrated with Claude, but actual access must be validated.
-- Salesforce meetings and Gong sales emails are assumed to be logged as Salesforce Tasks.
-- Use standard Salesforce objects only.
+- The user experience is a Claude Skill (package **v0.3.0** under `skill/discovery-to-opportunity/`).
+- Salesforce is the external CRM via Hosted MCP **`sobject-all`** (Claude Free-plan one-connector limit).
+- Meeting intelligence for demos uses **packaged simulated Granola fixtures** (no live Granola integration).
+- Salesforce meetings and Gong sales emails are represented as Salesforce Tasks in the synthetic seed (demo convention).
+- Use standard Salesforce objects only, plus org field `Opportunity.Handoff_Notes__c` for AE handoff.
 - Use synthetic data for the demo.
-- Salesforce CLI is installed and authenticated locally with the alias `discovery-dev`.
+- Salesforce CLI is installed and authenticated locally with the alias `discovery-dev` (**seeding only**).
 - The GitHub repository is private.
 - Do not store credentials, tokens, passwords, or secrets in the repository.
 
 ### Important Integration Distinction
 
-Salesforce CLI authentication in the local development environment does not automatically provide Salesforce access to Claude at runtime.
+Salesforce CLI authentication in the local development environment does not provide Salesforce access to Claude or Cursor at runtime.
 
-The finished Skill must use a supported Salesforce runtime connection or integration to perform actual CRM reads and writes.
+Claude runtime CRM access requires the Hosted MCP `sobject-all` connector connected in the Claude session. Cursor does not automatically inherit that Claude connector.
 
-Do not invent integrations, fabricate API responses, or claim functionality works unless it has been implemented and tested.
+Do not invent integrations, fabricate API responses, or claim live CRM writes succeed unless they have been executed and verified.
 
-If Granola data cannot be accessed directly, use clearly labeled synthetic meeting fixtures for repeatable testing and demos.
-
-Salesforce should remain the primary external system demonstrating actual integration.
+Salesforce remains the primary external system for live CRM demonstration (in Claude).
 
 ### Development Constraints
 
@@ -132,34 +129,15 @@ Salesforce should remain the primary external system demonstrating actual integr
 ## 7. Core Workflow
 
 1. Rep launches the Skill in Claude after a discovery meeting.
-2. Retrieve discovery meeting information, including transcript, attendees, summary, and action items.
-3. Identify the Salesforce Account and relevant Contacts.
-4. Retrieve Salesforce context:
-   - Account information.
-   - Related Contacts.
-   - Existing and historical Opportunities.
-   - Relevant Salesforce Tasks.
-   - Historical Opportunity Contact Roles where useful.
-5. Identify existing or potentially duplicate Opportunities.
-6. Analyze the meeting and CRM history together.
-7. Map known information to Salesforce Opportunity fields.
-8. Assess MEDDPICC components as: Confirmed, Inferred, Unknown, or At Risk.
-9. Identify important qualification gaps and suggest useful follow-up questions.
-10. Present an Opportunity preview to the rep, including:
-    - Proposed Opportunity name.
-    - Account.
-    - Relevant Contacts.
-    - Potential business problem and use case.
-    - Proposed Salesforce fields.
-    - MEDDPICC assessment.
-    - Important unknowns and risks.
-    - Recommended follow-up questions.
-    - Existing Opportunity or duplicate warnings.
-11. Allow the rep to answer selected questions, skip questions, proceed, or decline.
-12. Validate Salesforce-required fields.
-13. Obtain explicit rep approval.
-14. Create the Opportunity and appropriate Opportunity Contact Roles if supported and approved.
-15. Return the Salesforce record ID and link.
+2. Identify and **confirm** the meeting from packaged fixtures (no Salesforce queries before confirmation).
+3. Analyze the full transcript (primary) plus summary/action items.
+4. Retrieve Salesforce context via MCP (Account → Contacts → Opportunities; optional OCR/Tasks).
+5. Decide CREATE / CREATE WITH GAPS / EXISTING OPPORTUNITY / DO NOT CREATE using initiative comparison (not Account overlap alone); apply BANT/MEDDPICC as coaching.
+6. Ask high-leverage clarifications one at a time (skippable).
+7. Preview Opportunity fields (concise Description; future CloseDate), OCR associations, and full AE handoff (`Handoff_Notes__c`).
+8. Obtain **explicit** approval of that exact preview.
+9. Re-check duplicates; create Opportunity (with `Handoff_Notes__c`) then OCRs for existing Contacts only; never delete; never invent Role/`IsPrimary` from title alone.
+10. Verify with read tools; return Ids/links and report partial failures accurately.
 
 ---
 
@@ -170,13 +148,13 @@ Salesforce should remain the primary external system demonstrating actual integr
 | **CREATE** | A legitimate potential opportunity exists. Present the proposed Opportunity and MEDDPICC gaps as recommendations. |
 | **CREATE WITH GAPS** | A legitimate opportunity exists, but important qualification context is missing. Offer follow-up questions while allowing the rep to proceed. |
 | **EXISTING OPPORTUNITY** | A potentially matching Opportunity exists. Show it to the rep and ask whether to associate activity with it or investigate further. Never automatically create a duplicate. |
-| **INSUFFICIENT INFORMATION** | Essential information is missing to reliably identify the Account, meaningfully describe the Opportunity, or populate mandatory Salesforce fields. |
+| **INSUFFICIENT INFORMATION** / **DO NOT CREATE** | No buying initiative (e.g. networking-only), or Account/Opportunity cannot be described / required Salesforce fields unresolvable. Conversational label: *No opportunity identified*. |
 
 ### Important Rule
 
-Missing MEDDPICC information alone must never result in **INSUFFICIENT INFORMATION**.
+Missing MEDDPICC information alone must never result in **INSUFFICIENT INFORMATION** / DO NOT CREATE.
 
-Only genuine Salesforce requirements, unresolved duplicate risk, missing essential information, or lack of rep approval should block creation.
+Only genuine Salesforce requirements, unresolved same-initiative duplicate risk, missing essential information (no initiative / unidentifiable Account), or lack of rep approval should block creation. Incomplete BANT/MEDDPICC → CREATE or CREATE WITH GAPS with coaching.
 
 ---
 
@@ -238,45 +216,34 @@ The project uses a fictional sales environment.
 ```text
 discovery-to-opportunity-agent/
 ├── skill/
-│   └── discovery-to-opportunity/
+│   └── discovery-to-opportunity/          # Claude Skill package (folder; zip when installing)
 │       ├── SKILL.md
-│       ├── references/
-│       │   ├── qualification-rules.md
-│       │   ├── salesforce-field-mapping.md
-│       │   └── decision-framework.md
-│       └── examples/
-├── data/
-│   ├── accounts.json
-│   ├── contacts.json
-│   ├── opportunities.json
-│   ├── tasks.json
-│   ├── opportunity_contact_roles.json
-│   ├── granola_meetings.json
-│   └── data-dictionary.md
+│       ├── INSTALL.md
+│       ├── fixtures/granola_meetings.json
+│       ├── references/                   # decision, qualification, field mapping, retrieval, writes
+│       └── examples/scenario-guide.md
+├── data/                                 # Canonical fixtures + CRM seed JSON + data-dictionary
 ├── tests/
-│   ├── scenarios.md
+│   ├── scenarios.md                      # Five scenarios + manual runbook
 │   ├── expected_outcomes.json
-│   └── test-guide.md
+│   └── test_write_workflow_guards.py
 ├── docs/
-│   ├── README.md
 │   ├── architecture.md
-│   ├── demo-decisions.md
-│   ├── sales-user-guide.md
-│   ├── one-pager.md
-│   └── demo-script.md
+│   └── demo-decisions.md                 # Assumptions + open validations + project status
 ├── scripts/
-│   └── load_salesforce_data/
+│   ├── load_salesforce_data.py
+│   └── validate_synthetic_data.py
 ├── PROJECT_CONTEXT.md
 └── README.md
 ```
 
-Small adjustments are allowed if technically justified. Avoid unnecessary complexity.
+Small adjustments are allowed if technically justified. Avoid unnecessary complexity. Planned demo docs (sales-user-guide, one-pager, demo-script) remain out of tree until written.
 
 ---
 
 ## 12. Status Notes
 
-- Foundation documentation is established first.
-- Skill implementation, synthetic data, Salesforce seeding, and demo artifacts are planned for later phases.
-- Do not create or modify Salesforce records until that phase is explicitly approved.
-- Distinguish clearly between **implemented** and **planned** functionality in all user-facing docs.
+- Requirements, architecture, synthetic data, scenarios, Skill **v0.3.0**, and local write-guard tests are in place.
+- Live Claude MCP Opportunity create + post-write verification remain a separate smoke step (see `docs/demo-decisions.md` validation tables).
+- Do not create or modify Salesforce records without explicit rep approval in the Skill workflow.
+- Distinguish clearly between **implemented** instructions/tests and **live-session** CRM results in all user-facing docs.
